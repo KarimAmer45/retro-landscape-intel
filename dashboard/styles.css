@@ -3,9 +3,12 @@
   --paper: #f2eddc;
   --acid: #d9ff43;
   --orange: #ff6838;
+  /* Darker orange for text: the brand orange is 2.5:1 on paper and fails WCAG AA. */
+  --orange-text: #c23c10;
   --lavender: #9b91ff;
-  --muted: #716d62;
+  --muted: #6a665b;
   --line: rgba(21, 20, 17, .2);
+  color-scheme: light;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--ink);
   background: var(--paper);
@@ -16,6 +19,8 @@
 html { scroll-behavior: smooth; }
 body { margin: 0; min-width: 320px; background: var(--paper); }
 a { color: inherit; }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.button:focus-visible { outline-color: var(--acid); }
 .scanlines { position: fixed; inset: 0; pointer-events: none; opacity: .12; z-index: 10; background: repeating-linear-gradient(0deg, transparent 0 3px, rgba(21,20,17,.12) 4px); mix-blend-mode: multiply; }
 .masthead { height: 72px; display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid var(--ink); padding: 0 3.5vw; position: relative; z-index: 2; }
 .brand { display: flex; align-items: center; gap: 13px; font-weight: 800; letter-spacing: -.02em; text-decoration: none; }
@@ -28,7 +33,7 @@ main { width: min(1440px, 100%); margin: 0 auto; }
 .eyebrow { margin: 0 0 20px; font: 700 11px/1.25 ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; }
 h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; letter-spacing: -.055em; }
 h1 { max-width: 960px; margin: 0; font-size: clamp(64px, 9.3vw, 134px); line-height: .84; }
-h1 em { font-weight: 400; color: var(--orange); }
+h1 em { font-weight: 400; color: var(--orange-text); }
 .dek { max-width: 670px; margin: 48px 0 0; font-size: 18px; line-height: 1.55; color: #45423b; }
 .hero-rule { position: relative; border-left: 1px solid var(--ink); }
 .hero-rule::after { content: ""; position: absolute; top: 0; right: 0; width: 62px; height: 62px; border-radius: 50%; background: var(--acid); border: 1px solid var(--ink); }
@@ -46,7 +51,7 @@ h1 em { font-weight: 400; color: var(--orange); }
 .panel h2, .section-heading h2, .method-strip h2 { margin: 0; font-size: clamp(34px, 3.5vw, 54px); line-height: .95; }
 .legend { display: flex; gap: 16px; font: 600 10px/1 ui-monospace, monospace; text-transform: uppercase; }
 .legend span { display: flex; align-items: center; gap: 6px; }
-.legend i { display: inline-block; width: 10px; height: 10px; }
+.legend i { display: inline-block; width: 10px; height: 10px; border: 1px solid var(--ink); }
 .bar-score { background: var(--orange); }.bar-attention { background: var(--lavender); }
 .score-chart { margin-top: 38px; display: grid; gap: 13px; }
 .chart-row { display: grid; grid-template-columns: minmax(105px, 1.2fr) 4fr 36px; gap: 12px; align-items: center; }
@@ -96,4 +101,8 @@ footer { display: flex; justify-content: space-between; padding: 25px 3.5vw; bac
   .panel, .table-section, .method-strip { padding: 45px 20px; }.panel-heading { align-items: flex-start; flex-direction: column; }
   .controls { width: 100%; flex-direction: column; } input, select { width: 100%; }
   footer { gap: 15px; flex-direction: column; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .chart-total, .chart-attention { transition: none; }
 }

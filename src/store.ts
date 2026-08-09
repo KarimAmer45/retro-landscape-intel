@@ -1,4 +1,4 @@
-import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import { dirname } from "node:path";
 import { storeSchema, type GameStore, type NormalizedGame } from "./model.js";
 
@@ -16,9 +16,15 @@ export async function readStore(path: string): Promise<GameStore> {
 export async function writeStore(path: string, store: GameStore): Promise<void> {
   const validated = storeSchema.parse(store);
   await mkdir(dirname(path), { recursive: true });
-  const temporaryPath = `${path}.tmp`;
-  await writeFile(temporaryPath, `${JSON.stringify(validated, null, 2)}\n`, "utf8");
-  await rename(temporaryPath, path);
+  // Named per process so concurrent runs cannot truncate each other's temporary file.
+  const temporaryPath = `${path}.${process.pid}.tmp`;
+  try {
+    await writeFile(temporaryPath, `${JSON.stringify(validated, null, 2)}\n`, "utf8");
+    await rename(temporaryPath, path);
+  } catch (error) {
+    await rm(temporaryPath, { force: true });
+    throw error;
+  }
 }
 
 export function upsertGames(existing: NormalizedGame[], incoming: NormalizedGame[]): {
