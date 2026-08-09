@@ -25,5 +25,15 @@
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
+  },
+  "license": "MIT",
+  "author": "Karim Amer",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KarimAmer45/retro-landscape-intel.git"
+  },
+  "homepage": "https://github.com/KarimAmer45/retro-landscape-intel#readme",
+  "bugs": {
+    "url": "https://github.com/KarimAmer45/retro-landscape-intel/issues"
   }
 }

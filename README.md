@@ -1,8 +1,12 @@
 # Retro Landscape Intel
 
+[![CI](https://github.com/KarimAmer45/retro-landscape-intel/actions/workflows/ci.yml/badge.svg)](https://github.com/KarimAmer45/retro-landscape-intel/actions/workflows/ci.yml)
+
 A TypeScript/Node research tool that turns a real public games-data snapshot into an evidence-ranked retro landscape briefing and interactive dashboard.
 
 The artifact is intentionally decision-disciplined: it ranks **research candidates**, not acquisitions; links every row to its source; excludes owner estimates from scoring; and says what the data cannot support.
+
+![Retro Landscape Intel dashboard](docs/screenshot.png)
 
 ## What ships
 
@@ -76,3 +80,7 @@ data/games.json    normalized evidence snapshot
 ## Honest limitations
 
 This is public-signal discovery, not market sizing. SteamSpy coverage and cached fields can be incomplete; CCU is point-in-time; owner ranges are estimates; no rights, revenue, cost, console, or private sales data is present. A high score means “worth a teardown and corroboration,” not “buy or build this.”
+
+## License
+
+[MIT](LICENSE)
