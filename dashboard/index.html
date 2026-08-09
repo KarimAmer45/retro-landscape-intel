@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Evidence-ranked retro games landscape dashboard">
+    <title>Retro Landscape Intel</title>
+    <link rel="stylesheet" href="/dashboard/styles.css">
+  </head>
+  <body>
+    <div class="scanlines" aria-hidden="true"></div>
+    <header class="masthead">
+      <a class="brand" href="#top" aria-label="Retro Landscape Intel home">
+        <span class="brand-mark" aria-hidden="true">RLI</span>
+        <span>Retro Landscape Intel</span>
+      </a>
+      <p class="source-status"><span class="status-dot"></span><span id="snapshot-status">Loading source snapshot…</span></p>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">PUBLIC-SIGNAL RESEARCH CONSOLE / 01</p>
+          <h1>Find the signal.<br><em>Question the hype.</em></h1>
+          <p class="dek">A reproducible view of retro-tagged games, ranked for research priority—not valuation. Every row links back to its public evidence.</p>
+        </div>
+        <div class="hero-rule" aria-hidden="true"><span>DATA → EVIDENCE → DECISION</span></div>
+      </section>
+
+      <section class="metrics" aria-label="Snapshot summary">
+        <article><span class="metric-label">Cohort</span><strong id="metric-cohort">—</strong><small>normalized records</small></article>
+        <article><span class="metric-label">Pursue</span><strong id="metric-pursue">—</strong><small>high-confidence leads</small></article>
+        <article><span class="metric-label">Median score</span><strong id="metric-median">—</strong><small>out of 100</small></article>
+        <article><span class="metric-label">Review evidence</span><strong id="metric-reviews">—</strong><small>cohort total</small></article>
+      </section>
+
+      <section class="analysis-grid">
+        <article class="panel chart-panel">
+          <div class="panel-heading">
+            <div><p class="eyebrow">TOP 10 / SIGNAL PROFILE</p><h2>Where confidence comes from</h2></div>
+            <div class="legend" aria-label="Chart legend"><span><i class="bar-score"></i>score</span><span><i class="bar-attention"></i>attention component</span></div>
+          </div>
+          <div id="score-chart" class="score-chart" role="img" aria-label="Top ten title scores and attention components"></div>
+        </article>
+
+        <aside class="panel decision-panel">
+          <p class="eyebrow">EXECUTIVE CALL</p>
+          <h2>Research first.<br>Rights second.</h2>
+          <p id="decision-copy">Loading the current ranked cohort…</p>
+          <ol id="top-actions" class="action-list"></ol>
+          <a class="text-link" href="/docs/exec-brief.md">READ THE ONE-PAGE BRIEF <span>↗</span></a>
+        </aside>
+      </section>
+
+      <section class="table-section">
+        <div class="section-heading">
+          <div><p class="eyebrow">EVIDENCE TABLE</p><h2>Ranked research queue</h2></div>
+          <div class="controls">
+            <label class="search"><span class="visually-hidden">Search titles</span><input id="search" type="search" placeholder="Search title or publisher…"></label>
+            <label><span class="visually-hidden">Filter recommendation</span><select id="call-filter"><option value="all">All calls</option><option value="pursue">Pursue</option><option value="park">Park</option><option value="pass">Pass</option></select></label>
+          </div>
+        </div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Rank</th><th>Comparable</th><th>Call</th><th>Score</th><th>Reviews</th><th>Positive</th><th>CCU</th><th>Signal</th></tr></thead>
+            <tbody id="ranked-table"></tbody>
+          </table>
+          <p id="empty-state" class="empty-state" hidden>No records match this filter.</p>
+        </div>
+        <div class="table-footer"><span id="row-count">—</span><span>Owner estimates excluded from score</span></div>
+      </section>
+
+      <section class="method-strip">
+        <p class="eyebrow">MODEL CARD / v1</p>
+        <div><h2>Five signals.<br>One challengeable score.</h2><p id="method-summary">35% review evidence · 20% conservative quality · 25% current attention · 10% recent engagement · 10% revival adjacency.</p></div>
+        <a class="button" href="/docs/method.md">Inspect the method</a>
+      </section>
+    </main>
+
+    <footer><span>Retro Landscape Intel</span><span>Public SteamSpy snapshot · No private sales data</span></footer>
+    <script type="module" src="/dist/dashboard/src/main.js"></script>
+  </body>
+</html>
