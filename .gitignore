@@ -4,3 +4,4 @@ dist/
 data/*.tmp
 coverage/
 .DS_Store
+.claude/
